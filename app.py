@@ -21,7 +21,9 @@ def process():
 	return "true"
 
 app.config['UPLOAD_FOLDER'] = "./uploads/"
-	
-if __name__ == "__main__":
-	Processer("./example_dataset/step1/a.bmp").run()
+
+processer = Processer()
+
+if __name__ == "__main__":	
+	processer.compare("./example_dataset/step1/num_0.bmp")
 	app.run()
