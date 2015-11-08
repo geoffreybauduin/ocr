@@ -4,6 +4,7 @@
 
 from flask import Flask, request
 from werkzeug import secure_filename
+from process import Processer
 
 app = Flask(__name__)
 
@@ -22,4 +23,5 @@ def process():
 app.config['UPLOAD_FOLDER'] = "./uploads/"
 	
 if __name__ == "__main__":
+	Processer("./example_dataset/step1/a.bmp").run()
 	app.run()
