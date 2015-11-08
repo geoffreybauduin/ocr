@@ -7,7 +7,7 @@ import cv2 as opencv
 class Processer:
 	
 	def __init__(self, filename):
-		self.image = opencv.imread(fiename)
+		self.image = opencv.imread(filename)
 		if self.image == None:
 			raise Exception("Cannot load " + filename)
 		
