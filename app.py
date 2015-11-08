@@ -25,5 +25,5 @@ app.config['UPLOAD_FOLDER'] = "./uploads/"
 processer = Processer()
 
 if __name__ == "__main__":	
-	processer.compare("./example_dataset/step1/num_0.bmp")
+	processer.compare("./example_dataset/step1/a.bmp")
 	app.run()
