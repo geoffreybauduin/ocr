@@ -6,16 +6,16 @@ import cv2 as opencv
 
 class Processer:
 	
-	def __init__(filename):
+	def __init__(self, filename):
 		self.image = opencv.imread(fiename)
 		if self.image == None:
 			raise Exception("Cannot load " + filename)
 		
-	def __smallize():
+	def __smallize(self):
 		self.image = opencv.resize(self.image, 50, 50)
 		pass
 		
-	def __rgb2gray():
+	def __rgb2gray(self):
 		opencv.cvtColor(self.image, self.image, opencv.CV_RGB2GRAY)
 		pass
 		
@@ -46,10 +46,9 @@ class Processer:
 	def __sort_result():
 		pass
 		
-	def run():
+	def run(self):
 		self.__smallize()
 		self.__rgb2gray()
-		opencv.imshow(self.image)
 		##
 		##self.__orph_gradient()
 		##self.__binarization()
