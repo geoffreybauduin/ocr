@@ -9,10 +9,18 @@ from matplotlib import pyplot as plt
 class Processer:
 	
 	def __init__(self):
-		letters, l_letters = self.__loadLetters("./letters.png")
-		digits, l_digits = self.__loadDigits("./digits.png")
-		self.train_labels = l_letters
-		train = letters
+		image = opencv.imread("./all.png")
+		gray = opencv.cvtColor(image, opencv.COLOR_BGR2GRAY)
+		cells = [np.hsplit(row, 84) for row in np.vsplit(gray, 102)]
+		# (102,84,20,20)
+		x = np.array(cells)
+		data = x.reshape(-1, 400).astype(np.float32)
+		k = np.arange(52)
+		for i in range(52, 62):
+			for j in range(0, 5):
+				k = np.append(k, i)
+		self.train_labels = np.repeat(k, 84)[:,np.newaxis]
+		train = data
 		self.knn = opencv.KNearest()
 		self.knn.train(train,self.train_labels)
 
@@ -36,7 +44,6 @@ class Processer:
 		labels = np.arange(10, 62)
 		return data, np.repeat(labels,84)[:,np.newaxis]
 		
-
 	def compare(self, filename):
 		image = opencv.imread(filename)
 		gray = opencv.cvtColor(image, opencv.COLOR_BGR2GRAY)
