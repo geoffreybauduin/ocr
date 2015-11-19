@@ -9,10 +9,11 @@ from matplotlib import pyplot as plt
 class Processer:
 	
 	def __init__(self):
+		self.data = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 		image = opencv.imread("./all.png")
 		gray = opencv.cvtColor(image, opencv.COLOR_BGR2GRAY)
 		cells = [np.hsplit(row, 84) for row in np.vsplit(gray, 102)]
-		# (102,84,20,20)
+		# (102,21,20,20)
 		x = np.array(cells)
 		data = x.reshape(-1, 400).astype(np.float32)
 		k = np.arange(52)
@@ -60,3 +61,5 @@ class Processer:
 		print "result:", result
 		print neighbours
 		print dist
+		print result[0][0]
+		return self.data[int(result[0][0])]
